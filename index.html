@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loan calculator</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,10 +15,10 @@
       <th>Loan Balance, Cumulative Equity, And Interest Payments</th>
     </tr>
     <tr>
-      <td>Amount of the loan (1): </td>
+      <td>Amount of the loan ($): </td>
       <td>
         <input id="amount">
-      <td rowspan="2">
+      <td rowspan="8">
         <canvas id="graph" width="400" height="250"></canvas>
       </td>
       </td>
@@ -38,7 +37,25 @@
     </tr>
     <tr>
       <th>Approximate Payments: </th>
-      <td><button></button></td>
+      <td><button>Calculate</button></td>
+    </tr>
+    <tr>
+      <td>Monthly payment: </td>
+      <td>$<span class="output" id="payment"></span></td>
+    </tr>
+    <tr>
+      <td>Total payment: </td>
+      <td>$<span class="output" id="total"></span></td>
+    </tr>
+    <tr>
+      <td>Total interest: </td>
+      <td>$<span class="output" id="totalinterest"></span></td>
+    </tr>
+    <tr>
+      <td>Sponsors: </td>
+      <td colspan="2">Apply for your loan with one of these fine lenders:
+        <div id="lenders"></div>
+      </td>
     </tr>
   </table>
 </body>
