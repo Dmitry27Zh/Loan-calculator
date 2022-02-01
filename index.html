@@ -17,7 +17,7 @@
     <tr>
       <td>Amount of the loan ($): </td>
       <td>
-        <input id="amount">
+        <input id="amount" onchange="calculate()">
       <td rowspan="8">
         <canvas id="graph" width="400" height="250"></canvas>
       </td>
@@ -25,11 +25,11 @@
     </tr>
     <tr>
       <td>Annual interest (%): </td>
-      <td><input id="apr"></td>
+      <td><input id="apr" onchange="calculate()"></td>
     </tr>
     <tr>
       <td>Repayment period (years): </td>
-      <td><input id="years"></td>
+      <td><input id="years" onchange="calculate()"></td>
     </tr>
     <tr>
       <td>Zipcode (to find lenders): </td>
@@ -58,6 +58,7 @@
       </td>
     </tr>
   </table>
+  <script src="index.js"></script>
 </body>
 
 </html>
