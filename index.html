@@ -5,10 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loan calculator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
+  <table>
+    <tr>
+      <th>Enter Loan Data:</th>
+      <td></td>
+      <th>Loan Balance, Cumulative Equity, And Interest Payments</th>
+    </tr>
+    <tr>
+      <td>Amount of the loan (1): </td>
+      <td>
+        <input id="amount">
+      <td rowspan="2">
+        <canvas id="graph" width="400" height="250"></canvas>
+      </td>
+      </td>
+    </tr>
+    <tr>
+      <td>Annual interest (%): </td>
+      <td><input id="apr"></td>
+    </tr>
+    <tr>
+      <td>Repayment period (years): </td>
+      <td><input id="years"></td>
+    </tr>
+    <tr>
+      <td>Zipcode (to find lenders): </td>
+      <td><input id="zipcode"></td>
+    </tr>
+    <tr>
+      <th>Approximate Payments: </th>
+      <td><button></button></td>
+    </tr>
+  </table>
 </body>
 
 </html>
