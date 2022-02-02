@@ -18,6 +18,14 @@ function calculate() {
     payment.innerHTML = monthly.toFixed(2)
     total.innerHTML = (monthly * payments).toFixed(2)
     totalinterest.innerHTML = (monthly * payments - principal).toFixed(2)
+    save(amount.value, apr.value, years.value, zipcode.value)
+
+    try {
+      getLenders(amount.value, apr.value, years.value, zipcode.value)
+    } catch(e) {}
+  } else {
+    payment.innerHTML = ''
+    total.innerHTML = totalinterest.innerHTML = ''
   }
 }
 
@@ -36,5 +44,29 @@ window.onload = function() {
     apr.value = localStorage.loan_apr
     years.value = localStorage.loan_years
     zipcode.value = localStorage.loan_zipcode
+  }
+}
+
+function getLenders(amount, apr, years, zipcode) {
+  if (!window.XMLHttpRequest) return
+  const ad = document.getElementById('lenders')
+  if (!ad) return
+  const url = 'getLenders.php' + '?amt=' + encodeURIComponent(amount) + '&apr=' + encodeURIComponent(apr) + '&yrs=' + encodeURIComponent(years) + '&zip=' + encodeURIComponent(zipcode)
+
+  const req = new XMLHttpRequest()
+  req.open('GET', url)
+  req.send(null)
+  req.onreadystatechange = function() {
+    if (req.readyState == 4 && req.status == 200) {
+      const response = req.responseText
+      const lenders = JSON.parse(response)
+      let list = ''
+
+      for (let i = 0; i < lenders.lenders; i++) {
+        list += '<li><a href="' + lenders[i].url + '">' + lenders[i].name + '</a></li>'
+      }
+
+      ad.innerHTML = '<ul>' + list + '</ul>'
+    }
   }
 }
