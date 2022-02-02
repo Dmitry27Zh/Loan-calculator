@@ -29,3 +29,12 @@ function save(amount, apr, years, zipcode) {
     localStorage.loan_zipcode = zipcode
   }
 }
+
+window.onload = function() {
+  if (window.localStorage && localStorage.loan_amount) {
+    amount.value = localStorage.loan_amount
+    apr.value = localStorage.loan_apr
+    years.value = localStorage.loan_years
+    zipcode.value = localStorage.loan_zipcode
+  }
+}
