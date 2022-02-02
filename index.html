@@ -18,9 +18,9 @@
       <td>Amount of the loan ($): </td>
       <td>
         <input id="amount" onchange="calculate()">
+      </td>
       <td rowspan="8">
         <canvas id="graph" width="400" height="250"></canvas>
-      </td>
       </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
     </tr>
     <tr>
       <th>Approximate Payments: </th>
-      <td><button>Calculate</button></td>
+      <td><button onclick="calculate()">Calculate</button></td>
     </tr>
     <tr>
       <td>Monthly payment: </td>

@@ -20,3 +20,12 @@ function calculate() {
     totalinterest.innerHTML = (monthly * payments - principal).toFixed(2)
   }
 }
+
+function save(amount, apr, years, zipcode) {
+  if (window.localStorage) {
+    localStorage.loan_amount = amount
+    localStorage.loan_apr = apr
+    localStorage.loan_years = years
+    localStorage.loan_zipcode = zipcode
+  }
+}
