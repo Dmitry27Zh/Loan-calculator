@@ -5,6 +5,7 @@ const zipcode = document.getElementById('zipcode')
 const payment = document.getElementById('payment')
 const total = document.getElementById('total')
 const totalinterest = document.getElementById('totalinterest')
+const graph = document.getElementById('graph')
 
 function calculate() {
   const principal = parseFloat(amount.value)
@@ -23,6 +24,8 @@ function calculate() {
     try {
       getLenders(amount.value, apr.value, years.value, zipcode.value)
     } catch(e) {}
+
+    chart(principal, interest, monthly, payments)
   } else {
     payment.innerHTML = ''
     total.innerHTML = totalinterest.innerHTML = ''
@@ -62,11 +65,32 @@ function getLenders(amount, apr, years, zipcode) {
       const lenders = JSON.parse(response)
       let list = ''
 
-      for (let i = 0; i < lenders.lenders; i++) {
+      for (let i = 0; i < lenders.length; i++) {
         list += '<li><a href="' + lenders[i].url + '">' + lenders[i].name + '</a></li>'
       }
 
       ad.innerHTML = '<ul>' + list + '</ul>'
     }
   }
+}
+
+function chart(principal, interest, monthly, payments) {
+  graph.width = graph.width
+  if (arguments.length == 0 || !graph.getContext) return
+  const g = graph.getContext('2d')
+  const width = graph.width, height = graph.height
+
+  function paymentToX(n) {
+    return n * width / payments
+  }
+
+  function amountToY(a) {
+    return height - (a * height / (monthly * payments * 1.05))
+  }
+  g.moveTo(paymentToX(0), amountToY(0))
+  g.lineTo(paymentToX(payments), amountToY(monthly * payments))
+  g.lineTo(paymentToX(payments), amountToY(0))
+  g.closePath()
+  g.fillStyle = '#f88'
+  g.fill()
 }
