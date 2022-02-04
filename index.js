@@ -121,12 +121,12 @@ function chart(principal, interest, monthly, payments) {
     const thisMonthInterest = bal * interest
     bal -= monthly - thisMonthInterest
     g.lineTo(paymentToX(p), amountToY(bal))
-    g.lineWidth = 3
-    g.stroke()
-    g.fillStyle = 'black'
-    g.fillText('Loan Balance', 20, 50)
   }
 
+  g.lineWidth = 3
+  g.stroke()
+  g.fillStyle = 'black'
+  g.fillText('Loan Balance', 20, 50)
   g.textAlign = 'center'
   const y = amountToY(0)
 
